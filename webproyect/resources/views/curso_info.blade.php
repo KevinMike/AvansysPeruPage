@@ -1,0 +1,144 @@
+@extends('master')
+@section('menu')
+    <li><a href="{{ url('/') }}" >Inicio</a></li>
+    <li ><a href="{{ url('/informacion') }}" >Quienes Somos</a></li>
+    <li><a href="{{ url('/post') }}" >Noticias</a></li>
+    <li class="active" ><a href="{{ url('/cursos') }}" >Cursos</a></li>
+    <li><a href="{{ url('/fotos') }}" >Fotos</a></li>
+    <li><a href="{{ url('/contacto')}}" >Contáctanos</a></li>
+    <li><a target="_blank" href="http://home.lan:90/moodle/" >Aula Virtual</a></li>
+@endsection
+
+@section('cabecera')
+    <header id="head" class="secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h1>{{$curso->nombre}}</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+@endsection
+@section('contenido')
+        <!-- container -->
+    <section class="container">
+
+        <div class="row">
+
+            <!-- Article main content -->
+            <article class="col-md-8 maincontent">
+                <br />
+                <br />
+                @if($curso->imagen_curso)
+                    <div class="text-center col-md-12" >
+                        <img src="{{asset('media/cursos/'.$curso->imagen_curso)}}" alt="{{$curso->titulo}}" >
+                        <br />
+                        <br />
+                    </div>
+                @endif
+                <table class="table">
+                    <tr>
+                        <td><b>Fecha de Inicio: </b></td>
+                        <td>{{ date('d-m-Y', strtotime($curso->fecha_inicio)) }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Duracion: </b></td>
+                        <td>{{$curso->duracion}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Frecuencia: </b></td>
+                        <td>{{$curso->frecuencia}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Costo: </b></td>
+                        <td>{{$curso->costo}} soles</td>
+                    </tr>
+                    <tr>
+                        <td><b>Horario: </b></td>
+                        <td>{{$curso->horario}}</td>
+                    </tr>
+                </table>
+                <h2>Descripción del Curso</h2>
+                <p>{!! nl2br($curso->descripcion) !!}</p>
+                <h2>Pre-inscribete a {{$curso->nombre}}</h2>
+                {!! Form::open(["url" => "/guardar_preinscripcion",'class'=>"form-horizontal", 'role'=>"form"]) !!}
+                <div class="form-group">
+                    {!! Form::label('dni','Nro de DNI',array('class'=>"col-md-4 control-label")) !!}
+                    <div class="col-md-6">
+                        {!! Form::text('dni',null,['class' => 'form-control','placeholder'=>'DNI','maxlength' => '8','required' => true]) !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('nombre','Nombre',array('class'=>"col-md-4 control-label")) !!}
+                    <div class="col-md-6">
+                        {!! Form::text('nombre',null,['class' => 'form-control','placeholder'=>'NOMBRES','required' => true,'maxlength' => '30']) !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('apellido','Apellido',array('class'=>"col-md-4 control-label")) !!}
+                    <div class="col-md-6">
+                        {!! Form::text('apellido',null,['class' => 'form-control','placeholder'=>'APELLIDOS','required' => true,'maxlength' => '30']) !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('telefono','Telefono/Celular',array('class'=>"col-md-4 control-label")) !!}
+                    <div class="col-md-6">
+                        {!! Form::text('telefono',null,['class' => 'form-control','placeholder'=>'TELEFONO O CELULAR','required' => true,'maxlength' => '15']) !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('email','Correo Electronico',array('class'=>"col-md-4 control-label")) !!}
+                    <div class="col-md-6">
+                        {!! Form::email('email',null,['class' => 'form-control','placeholder'=>'CORREO ELECTRÓNICO','required' => true,'maxlength' => '50']) !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('interes','Interés',array('class'=>"col-md-4 control-label")) !!}
+                    <div class="col-md-6">
+                        <select name="interes" id="interes" class="form-control">
+                            @foreach ($interes as $interes)
+                                <option value="{{$interes}}">{{$interes}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                        <select name="curso" id="curso" class="form-control" style="visibility:hidden">
+                                <option value="{{$curso->id}}">{{$curso->nombre}} / <small>Inicio </small> {{$curso->fecha_inicio}}</option>
+                        </select>
+
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-4">
+                        {!! Form::submit('Completar Preinscripción',['class' => 'btn btn-primary']) !!}
+                    </div>
+                </div>
+                {!! Form::close() !!}
+            </article>
+            <!-- /Article -->
+
+            <!-- Sidebar
+            <aside class="col-md-4 sidebar sidebar-right">
+
+                <div class="row panel">
+                    <div class="col-xs-12">
+                        <h3>Descripción</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque cursus erat vitae interdum. Nam vehicula, felis eu semper tincidunt, mauris risus ultricies dolor, a tristique arcu libero sit amet felis. Donec venenatis sed velit eget dignissim.</p>
+                    </div>
+                </div>
+                <div class="row panel">
+                    <div class="col-xs-12">
+                        <h3>Lorem ipsum dolor sit</h3>
+                        <p>
+                            <img src="assets/images/1.jpg" alt="">
+                        </p>
+                        <p>Morbi vitae diam felis. Mauris vulputate nisi erat, adipiscing pretium lacus lacinia quis. Sed consectetur ipsum.</p>
+                    </div>
+                </div>
+
+            </aside>
+             /Sidebar -->
+
+        </div>
+    </section>
+    <!-- /container -->
+@endsection
