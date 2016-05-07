@@ -56,7 +56,7 @@ class HomeController extends Controller {
 		$categoria = Categoria::all();
 		$curso = Curso::all();
 		$preinscripciones = Preinscripcion::all();
-		return view('\home\home',['post'=>$post,'curso'=>$curso,'foto'=>$foto,'categoria'=>$categoria,'preinscripciones'=>$preinscripciones]);
+		return view('home\home',['post'=>$post,'curso'=>$curso,'foto'=>$foto,'categoria'=>$categoria,'preinscripciones'=>$preinscripciones]);
 	}
 
 

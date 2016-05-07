@@ -54,12 +54,7 @@
 		.carousel-control{
 			width: 5%;
 		}
-		.carousel-inner{
-			background: -webkit-linear-gradient(left, #000 , blue); /* For Safari 5.1 to 6.0 */
-			background: -o-linear-gradient(left, #000, blue); /* For Opera 11.1 to 12.0 */
-			background: -moz-linear-gradient(left, #000, blue); /* For Firefox 3.6 to 15 */
-			background: linear-gradient(to left, #000 , blue); /* Standard syntax */
-		}
+
 		.item{
 			position: relative;
 		}
@@ -100,33 +95,29 @@
 							<div class="item active">
 								<img src="{{asset('images/slider/slide-one.jpg')}}" alt="">
 								<div class="carousel-caption">
-									<h1>Tax</h1>
-									<p>good business consulting service</p>
-									<button>learn more</button>
+									<h2>Controlar la complejidad es la esencia de la programación</h2>
+									<p>Brian Kernigan</p>
 								</div>
 							</div>
 							<div class="item">
 								<img src="{{asset('images/slider/slide-two.jpg')}}" alt="">
 								<div class="carousel-caption">
-									<h1>Financial</h1>
-									<p>good business consulting service</p>
-									<button>learn more</button>
+									<h2>La función de un buen software es hacer que lo complejo aparente ser simple</h2>
+									<p>Grady Booch</p>
 								</div>
 							</div>
 							<div class="item">
 								<img src="{{asset('images/slider/slide-three.jpg')}}" alt="">
 								<div class="carousel-caption">
-									<h1>Consulting</h1>
-									<p>good business consulting service</p>
-									<button>learn more</button>
+									<h2>Controlar la complejidad es la esencia de la programación</h2>
+									<p>Brian Kernigan</p>
 								</div>
 							</div>
 							<div class="item">
 								<img src="{{asset('images/slider/slide-four.jpg')}}" alt="">
 								<div class="carousel-caption">
-									<h1>Money</h1>
-									<p>good business consulting service</p>
-									<button>learn more</button>
+									<h2>Controlar la complejidad es la esencia de la programación</h2>
+									<p>Brian Kernigan</p>
 								</div>
 							</div>
 						</div>
