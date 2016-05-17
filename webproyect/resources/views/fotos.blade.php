@@ -1,41 +1,23 @@
 @extends('master')
 @section('menu')
-	<li ><a href="{{ url('/') }}" >Inicio</a></li>
-	<li><a href="{{ url('/informacion') }}" >Quienes Somos</a></li>
-	<li><a href="{{ url('/post') }}" >Noticias</a></li>
-	<li><a href="{{ url('/cursos') }}" >Cursos</a></li>
-	<li class="active" ><a href="{{ url('/fotos') }}" >Fotos</a></li>
-	<li ><a href="{{ url('/contacto')}}" >Contáctanos</a></li>
-	<li><a target="_blank" href="http://home.lan:90/moodle/" >Aula Virtual</a></li>
-@endsection
-
-@section('cabecera')
-	<header id="head" class="secondary">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-8">
-					<h1>Galería de Fotos</h1>
-				</div>
-			</div>
-		</div>
-	</header>
+	<li><a href="{{ url('/') }}" id="inicio" >Inicio</a></li>
+	<li><a href="{{ url('/informacion') }}" id="quienes_somos" >Quienes Somos</a></li>
+	<li><a href="{{ url('/post') }}" id="mapa">Noticias</a></li>
+	<li><a href="{{ url('/cursos') }}" id ="cursos" >Cursos</a></li>
+	<li  class="active"><a href="{{ url('/fotos') }}" id="fotos">Fotos</a></li>
+	<li><a href="{{ url('/contacto')}}" id="contactanos" >Contáctanos</a></li>
+	<li><a target="_blank" href="http://home.lan:90/moodle/" id="aula_virtual">Aula Virtual</a></li>
 @endsection
 
 @section('contenido')
 
 		<!-- container -->
-	<section class="container">
-		<div class="row">
 			<div class="col-md-12">
-				<section id="portfolio" class="page-section section appear clearfix">
-					<br />
-					<br />
+				<div id="portfolio" class="page-section section appear clearfix">
 					<p>
 						<br />
 						<br />
 					</p>
-
-
 					<div class="row">
 						<nav id="filter" class="col-md-12 text-center">
 							<ul>
@@ -71,10 +53,7 @@
 						</div>
 					</div>
 
-				</section>
+				</div>
 			</div>
-		</div>
-
-	</section>
 	<!-- /container -->
 @endsection

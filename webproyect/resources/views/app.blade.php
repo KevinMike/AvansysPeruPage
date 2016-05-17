@@ -8,14 +8,10 @@
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-	<!-- JQUERY-->
-	<script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
-	<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-	<link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}">
-	<!-- FIN JQUERY -->
 	<link rel="stylesheet" href="{{asset('css/chosen.min.css')}}">
 	<link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}">
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+	<link rel="stylesheet" href="{{asset('plugins/jquery-ui-1.11.3/jquery-ui.min.css')}}">
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -58,6 +54,8 @@
 	@yield('content')
 
 	<!-- Scripts -->
+	<script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
+	<script src="{{asset('plugins/jquery-ui-1.11.3/jquery-ui.min.js')}}"></script>
 	<script src="{{asset('js/chosen.jquery.min.js')}}"></script>
 	<script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
 	<script src="{{asset('js/jquery.battatech.excelexport.min.js')}}"></script>
@@ -197,6 +195,35 @@
 		} );
 
 
+	</script>
+	<!--Agregar enlaces a las publicaciones-->
+	<script>
+		initSample();
+		$( "#tabs" ).tabs();
+		$( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' });
+		if($('#select_post option').length < 1 )
+		{
+			$("#actualizar_post").attr("disabled", "disabled");
+			$("#eliminar_post").attr("disabled", "disabled");
+
+		}
+		if($('#select_curso option').length < 1 )
+		{
+			$("#actualizar_curso").attr("disabled", "disabled");
+			$("#eliminar_curso").attr("disabled", "disabled");
+
+		}
+		if($('#select_foto option').length < 1 )
+		{
+			$("#eliminar_foto").attr("disabled", "disabled");
+
+		}
+		function agregar_enlace () {
+			var link = document.getElementById("link").value;
+			var nombre = document.getElementById("nombre").value;
+			var cadena = "<a target='_blank' href='"+ link +"'>"+nombre+"</a>";
+			document.getElementById("texto").value = document.getElementById("texto").value + cadena;
+		}
 	</script>
 </body>
 </html>

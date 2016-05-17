@@ -65,6 +65,7 @@ class HomeController extends Controller {
     public function add_curso(Request $request)
     {
 		$file = Input::file("imagen_curso");
+		$logo = Input::file("logo_curso");
 		$rules = array(
 			'imagen'     => 'image'
 		);
@@ -96,7 +97,9 @@ class HomeController extends Controller {
 			$curso->fecha_inicio = $date;
 			$curso->costo = Input::get('costo');
 			$curso->duracion = Input::get('duracion');
-			$curso->save();
+			$curso->logo = $this->generateRandomString().".".$logo->getClientOriginalExtension();
+			$logo->move("media/cursos/logos",$curso->logo);
+			//$curso->save();
 			if($file)
 			{
 				$nombre = $this->generateRandomString().".".$file->getClientOriginalExtension();
@@ -123,6 +126,7 @@ class HomeController extends Controller {
 	public function update_curso(Request $request)
 	{
 		$file = Input::file("imagen_curso");
+		$logo = Input::file("logo_curso");
 		$rules = array(
 			'imagen'     => 'image'
 		);
@@ -154,6 +158,12 @@ class HomeController extends Controller {
 			$curso->fecha_inicio = $date;
 			$curso->costo = Input::get('costo');
 			$curso->duracion = Input::get('duracion');
+			if($logo)
+			{
+				unlink(__DIR__."/../../../../public/media/cursos/logos/".$curso->logo);
+				$curso->logo = $this->generateRandomString().".".$logo->getClientOriginalExtension();
+				$logo->move("media/cursos/logos",$curso->logo);
+			}
 			if($file)
 			{
 				if($curso->save())
@@ -164,7 +174,7 @@ class HomeController extends Controller {
 					if($curso->save()){
 						$file->move("media/cursos",$nombre);
 						if($curso_anterior){
-							unlink(__DIR__."/../../../public/media/cursos/".$curso_anterior);
+							unlink(__DIR__."/../../../../public/media/cursos/".$curso_anterior);
 						}
 						return Redirect::to('home')->with(array('confirm' => 'Se Actualizó el Curso '.$curso->nombre.' con éxito.'));
 					}
@@ -184,11 +194,12 @@ class HomeController extends Controller {
 		$curso = Curso::find($id);
 		$nombre = $curso->nombre;
 		$foto = $curso->imagen_curso;
+		unlink(__DIR__."/../../../../public/media/cursos/logos/".$curso->logo);
 		if($foto)
 		{
 			if($curso->delete())
 			{
-				unlink(__DIR__."/../../../public/media/cursos/".$foto);
+				unlink(__DIR__."/../../../../public/media/cursos/".$foto);
 				return Redirect::to('home')->with(array('confirm' => 'Se Elimino el Curso '.$nombre.' con èxito.'));
 			}
 		}
@@ -258,7 +269,7 @@ class HomeController extends Controller {
 		{
 			if($post->delete())
 			{
-				unlink(__DIR__."/../../../public/media/posts/".$foto);
+				unlink(__DIR__."/../../../../public/media/posts/".$foto);
 				return Redirect::to('home')->with(array('confirm' => 'Se Eliminó la Publicación '.$nombre.' con èxito.'));
 			}
 		}
@@ -311,7 +322,7 @@ class HomeController extends Controller {
 				if($post->save()){
 					$file->move("media/posts",$nombre);
 					if($imagen_anterior){
-						unlink(__DIR__."/../../../public/media/posts/".$imagen_anterior);
+						unlink(__DIR__."/../../../../public/media/posts/".$imagen_anterior);
 					}
 					return Redirect::to('home')->with(array('confirm' => 'Se Actualizó la Publicación '.$post->titulo.' con éxito.'));
 				}

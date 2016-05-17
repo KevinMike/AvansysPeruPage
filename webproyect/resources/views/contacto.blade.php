@@ -1,29 +1,16 @@
 @extends('master')
 @section('menu')
-    <li ><a href="{{ url('/') }}" >Inicio</a></li>
-    <li><a href="{{ url('/informacion') }}" >Quienes Somos</a></li>
-    <li><a href="{{ url('/post') }}" >Noticias</a></li>
-    <li><a href="{{ url('/cursos') }}" >Cursos</a></li>
-    <li><a href="{{ url('/fotos') }}" >Fotos</a></li>
-    <li class="active" ><a href="{{ url('/contacto')}}" >Contáctanos</a></li>
-    <li><a target="_blank" href="http://home.lan:90/moodle/" >Aula Virtual</a></li>
-@endsection
-
-@section('cabecera')
-    <header id="head" class="secondary">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8">
-                    <h1>Contáctanos</h1>
-                </div>
-            </div>
-        </div>
-    </header>
+    <li><a href="{{ url('/') }}" id="inicio" >Inicio</a></li>
+    <li><a href="{{ url('/informacion') }}" id="quienes_somos" >Quienes Somos</a></li>
+    <li><a href="{{ url('/post') }}" id="mapa">Noticias</a></li>
+    <li><a href="{{ url('/cursos') }}" id ="cursos" >Cursos</a></li>
+    <li><a href="{{ url('/fotos') }}" id="fotos">Fotos</a></li>
+    <li class="active"><a href="{{ url('/contacto')}}" id="contactanos" >Contáctanos</a></li>
+    <li><a target="_blank" href="http://home.lan:90/moodle/" id="aula_virtual">Aula Virtual</a></li>
 @endsection
 
 @section('contenido')
     <!-- container -->
-    <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <h3 class="section-title">Tu Mensaje</h3>
@@ -32,7 +19,7 @@
                 </p>
                 {!! Form::open(['url' => '/send','method'=>'post']) !!}
                     <div class="form-group">
-                        {!! Form::label('email','Correro Electrónico',array('class'=>"col-md-4 control-label")) !!}
+                        {!! Form::label('email','Email',array('class'=>"col-md-4 control-label")) !!}
                         {!! Form::email('email',null,['class' => 'form-control','required' => true]) !!}
                     </div>
                     <div class="form-group">
@@ -77,10 +64,9 @@
                     </div>
                 </div>
                 <h3 class="section-title">Ubicanos en...</h3>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d948.5679662211528!2d-70.24937926907425!3d-18.012582451403556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915acf64fb272bef%3A0xcf6ba61f56564cdb!2sSan+Martin+520%2C+Tacna%2C+Per%C3%BA!5e0!3m2!1ses!2ses!4v1426265136737" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1ses!2spe!4v1463494503304!6m8!1m7!1smC041MgKAVJgfq5EKsOHVg!2m2!1d-18.03145126902847!2d-70.25128430640441!3f271.7646457334082!4f-2.8925925203103873!5f0.7820865974627469" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
         </div>
-    </div>
     <!-- /container -->
 
     <!-- Ventana Modal de Confirmación-->
@@ -106,17 +92,7 @@
 @endsection
 
 @section('javascript')
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqJ2HTtOoBl9P81kcVaQyfv_dDAwCcxGc&sensor=TRUE" type="text/javascript"></script>
     <script type="text/javascript">
-        function initialize() {
-            var mapOptions = {
-                center: new google.maps.LatLng(-18.0124466, -70.2494081),
-                zoom: 20,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("map_canvas"),
-                    mapOptions);
-        }
         @if($status)
             $("#myModal").on("show", function() { // wire up the OK button to dismiss the modal when shown
             $("#myModal a.btn").on("click", function(e) {

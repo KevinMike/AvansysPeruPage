@@ -1,35 +1,23 @@
 @extends('master')
 @section('menu')
-    <li><a href="{{ url('/') }}" >Inicio</a></li>
-    <li ><a href="{{ url('/informacion') }}" >Quienes Somos</a></li>
-    <li><a href="{{ url('/post') }}" >Noticias</a></li>
-    <li class="active" ><a href="{{ url('/cursos') }}" >Cursos</a></li>
-    <li><a href="{{ url('/fotos') }}" >Fotos</a></li>
-    <li><a href="{{ url('/contacto')}}" >Contáctanos</a></li>
-    <li><a target="_blank" href="http://home.lan:90/moodle/" >Aula Virtual</a></li>
+    <li><a href="{{ url('/') }}" id="inicio" >Inicio</a></li>
+    <li><a href="{{ url('/informacion') }}" id="quienes_somos" >Quienes Somos</a></li>
+    <li><a href="{{ url('/post') }}" id="mapa">Noticias</a></li>
+    <li class="active"><a href="{{ url('/cursos') }}" id ="cursos" >Cursos</a></li>
+    <li><a href="{{ url('/fotos') }}" id="fotos">Fotos</a></li>
+    <li><a href="{{ url('/contacto')}}" id="contactanos" >Contáctanos</a></li>
+    <li><a target="_blank" href="http://home.lan:90/moodle/" id="aula_virtual">Aula Virtual</a></li>
 @endsection
 
-@section('cabecera')
-    <header id="head" class="secondary">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8">
-                    <h1>{{$curso->nombre}}</h1>
-                </div>
-            </div>
-        </div>
-    </header>
-@endsection
 @section('contenido')
         <!-- container -->
-    <section class="container">
-
         <div class="row">
 
             <!-- Article main content -->
-            <article class="col-md-8 maincontent">
+            <article class="col-md-12 maincontent">
                 <br />
                 <br />
+                <h2>{{$curso->nombre}}</h2>
                 @if($curso->imagen_curso)
                     <div class="text-center col-md-12" >
                         <img src="{{asset('media/cursos/'.$curso->imagen_curso)}}" alt="{{$curso->titulo}}" >
@@ -115,30 +103,5 @@
                 {!! Form::close() !!}
             </article>
             <!-- /Article -->
-
-            <!-- Sidebar
-            <aside class="col-md-4 sidebar sidebar-right">
-
-                <div class="row panel">
-                    <div class="col-xs-12">
-                        <h3>Descripción</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras scelerisque cursus erat vitae interdum. Nam vehicula, felis eu semper tincidunt, mauris risus ultricies dolor, a tristique arcu libero sit amet felis. Donec venenatis sed velit eget dignissim.</p>
-                    </div>
-                </div>
-                <div class="row panel">
-                    <div class="col-xs-12">
-                        <h3>Lorem ipsum dolor sit</h3>
-                        <p>
-                            <img src="assets/images/1.jpg" alt="">
-                        </p>
-                        <p>Morbi vitae diam felis. Mauris vulputate nisi erat, adipiscing pretium lacus lacinia quis. Sed consectetur ipsum.</p>
-                    </div>
-                </div>
-
-            </aside>
-             /Sidebar -->
-
-        </div>
-    </section>
     <!-- /container -->
 @endsection

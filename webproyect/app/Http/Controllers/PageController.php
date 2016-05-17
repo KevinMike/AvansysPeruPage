@@ -15,12 +15,6 @@ class PageController extends Controller
 
 	public function index()
 	{
-		/*define('FACEBOOK_SDK_V4_SRC_DIR','/path/to/fb-php-sdk-v4/src/Facebook/');
-        //require __DIR__.'/path/to/facebook-php-sdk-v4/autoload.php';
-        dump(FACEBOOK_SDK_V4_SRC_DIR);
-        dump(PATH_SEPARATOR);
-
-        FacebookSession::setDefaultApplication('1608437069443308', '4c40575892d0e50e32df293bcfeb8adf');*/
 		$publicaciones = Post::orderBy('id', 'DESC')->paginate(4);
 		return view('index', ["post" => $publicaciones]);
 	}

@@ -8,37 +8,6 @@
 			box-sizing: border-box;
 		}
 	</style>
-    <!--Agregar enlaces a las publicaciones-->
-	<script>
-		$(function() {
-			initSample();
-			$( "#tabs" ).tabs();
-			$( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' });
-			if($('#select_post option').length < 1 )
-			{
-			  $("#actualizar_post").attr("disabled", "disabled");
-			  $("#eliminar_post").attr("disabled", "disabled");
-
-			}
-			if($('#select_curso option').length < 1 )
-			{
-			  $("#actualizar_curso").attr("disabled", "disabled");
-			  $("#eliminar_curso").attr("disabled", "disabled");
-
-			}
-			if($('#select_foto option').length < 1 )
-			{
-			  $("#eliminar_foto").attr("disabled", "disabled");
-
-			}
-		});
-		function agregar_enlace () {
-			var link = document.getElementById("link").value;
-			var nombre = document.getElementById("nombre").value;
-			var cadena = "<a target='_blank' href='"+ link +"'>"+nombre+"</a>";
-			document.getElementById("texto").value = document.getElementById("texto").value + cadena;
-		}
-	</script>
 <div class="container-fluid">
 	<div class="container">
 		@if($errors->has())
@@ -193,6 +162,12 @@
 								{!! Form::label('imagen_curso', 'Imagen del Curso',array('class'=>"col-md-4 control-label")) !!}
 								<div class="col-md-6">
 									{!! Form::file('imagen_curso',array('maxlenght'=>100)) !!}
+								</div>
+							</div>
+							<div class="form-group">
+								{!! Form::label('logo_curso', 'Logo del Curso',array('class'=>"col-md-4 control-label")) !!}
+								<div class="col-md-6">
+									{!! Form::file('logo_curso',array('maxlenght'=>100,'required'=>true)) !!}
 								</div>
 							</div>
 							<div class="form-group">

@@ -1,24 +1,14 @@
 @extends('master')
 @section('menu')
-    <li ><a href="{{ url('/') }}" >Inicio</a></li>
-    <li><a href="{{ url('/informacion') }}" >Quienes Somos</a></li>
-    <li class="active"><a href="{{ url('/post') }}" >Noticias</a></li>
-    <li><a href="{{ url('/cursos') }}" >Cursos</a></li>
-    <li><a href="{{ url('/fotos') }}" >Fotos</a></li>
-    <li ><a href="{{ url('/contacto')}}" >Contáctanos</a></li>
-    <li><a target="_blank" href="http://home.lan:90/moodle/" >Aula Virtual</a></li>
+    <li><a href="{{ url('/') }}" id="inicio" >Inicio</a></li>
+    <li><a href="{{ url('/informacion') }}" id="quienes_somos" >Quienes Somos</a></li>
+    <li class="active"><a href="{{ url('/post') }}" id="mapa">Noticias</a></li>
+    <li><a href="{{ url('/cursos') }}" id ="cursos" >Cursos</a></li>
+    <li><a href="{{ url('/fotos') }}" id="fotos">Fotos</a></li>
+    <li><a href="{{ url('/contacto')}}" id="contactanos" >Contáctanos</a></li>
+    <li><a target="_blank" href="http://home.lan:90/moodle/" id="aula_virtual">Aula Virtual</a></li>
 @endsection
-@section('cabecera')
-    <header id="head" class="secondary">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8">
-                    <h1>Publicaciones</h1>
-                </div>
-            </div>
-        </div>
-    </header>
-@endsection
+
 @section('contenido')
     <?php
 
@@ -27,16 +17,14 @@
 
     ?>
     <!-- container -->
-    <section class="container">
-
         <div class="row">
 
             <!-- Article main content -->
-            <article class="col-md-8 maincontent">
+            <article class="col-md-12 maincontent text-justify">
                 <br />
                 <br />
-                <h2>{{ $item->titulo }}</h2>
-                <strong>{{$dias[date('w',strtotime($item->updated_at))]." ".date('d',strtotime($item->updated_at))." de ".$meses[date('n',strtotime($item->updated_at))-1]. " del ".date('Y',strtotime($item->updated_at))." , ".date("g:i a",strtotime($item->updated_at))}}</strong>
+                <h2 class="text-center">{{ $item->titulo }}</h2>
+                <strong class="text-left">{{$dias[date('w',strtotime($item->updated_at))]." ".date('d',strtotime($item->updated_at))." de ".$meses[date('n',strtotime($item->updated_at))-1]. " del ".date('Y',strtotime($item->updated_at))." , ".date("g:i a",strtotime($item->updated_at))}}</strong>
                 <br>
                 <br>
                 @if($item->imagen)
@@ -58,11 +46,11 @@
             <!-- /Article -->
 
             <!-- Sidebar -->
-            <aside class="col-md-4 sidebar sidebar-right">
+            <aside class="col-md-12 sidebar sidebar-right">
                 <br>
                 <br>
                 @if($next)
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
                         <div class="newsBox">
                             <div class="thumbnail">
                                 <figure><time datetime="">{{$dias[date('w',strtotime($next->updated_at))]." ".date('d',strtotime($next->updated_at))." de ".$meses[date('n',strtotime($next->updated_at))-1]. " del ".date('Y',strtotime($next->updated_at))}}</time>
@@ -80,7 +68,7 @@
                     </div>
                 @endif
                 @if($previus)
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" >
                         <div class="newsBox">
                             <div class="thumbnail">
                                 <figure><time datetime="">{{$dias[date('w',strtotime($previus->updated_at))]." ".date('d',strtotime($previus->updated_at))." de ".$meses[date('n',strtotime($previus->updated_at))-1]. " del ".date('Y',strtotime($previus->updated_at))}}</time>
@@ -100,7 +88,6 @@
             </aside>
             <!-- /Sidebar -->
         </div>
-    </section>
     <!-- /container -->
 @endsection
 @section('javascript')

@@ -63,6 +63,12 @@
 				</div>
 			</div>
 			<div class="form-group">
+				{!! Form::label('logo_curso', 'Logo del Curso',array('class'=>"col-md-4 control-label")) !!}
+				<div class="col-md-6">
+					{!! Form::file('logo_curso',array('maxlenght'=>100)) !!}
+				</div>
+			</div>
+			<div class="form-group">
 				<div class="col-md-6 col-md-offset-4">
 					{!! Form::submit('Registrar Curso',['class' => 'btn btn-primary']) !!}
                     <input type="button" value="Atras" class="btn btn-warning" id="atras"/>

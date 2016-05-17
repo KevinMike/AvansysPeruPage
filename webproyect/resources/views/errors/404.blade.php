@@ -9,18 +9,6 @@
     <li><a target="_blank" href="http://home.lan:90/moodle/" >Aula Virtual</a></li>
 @endsection
 
-@section('cabecera')
-    <header id="head" class="secondary">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8">
-                    <h1>Error 404</h1>
-                </div>
-            </div>
-        </div>
-    </header>
-@endsection
-
 @section('contenido')
     <div class="container" >
         <div class="text-center">

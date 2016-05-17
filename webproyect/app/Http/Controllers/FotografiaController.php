@@ -78,7 +78,7 @@ class FotografiaController extends Controller {
 	{
         $id = $request->input('descripcion');
         $foto = Foto::find($id);
-        if(unlink(__DIR__."/../../../public/media/galeria/".$foto->foto))
+        if(unlink(__DIR__."/../../../../public/media/galeria/".$foto->foto))
         {
             $nombre = $foto->descripcion;
 			$foto->delete();

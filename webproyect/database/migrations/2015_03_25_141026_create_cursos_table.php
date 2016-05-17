@@ -23,6 +23,7 @@ class CreateCursosTable extends Migration {
 			$table->string('frecuencia',100);
 			$table->string('horario',100);
 			$table->string('imagen_curso', 100);
+			$table->string('logo', 100);
 			$table->timestamps();
 		});
 	}

@@ -1,22 +1,12 @@
-/*
-Theme: eLearning - Free Educational Responsive Web Template
-Description: Free to use for personal and commercial use
-Author: WebThemez.com
-Website: http://webthemez.com
-Note: Please do not remove the footer backlink (webthemez.com)--(if you want to remove contact: webthemez@gmail.com)
-Licence: Creative Commons Attribution 3.0** - http://creativecommons.org/licenses/by/3.0/
-*/
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=239165883107974";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 jQuery(document).ready(function ($) {
-    //da slider
-    $('#da-slider').cslider({
-        autoplay: true,
-        bgincrement: 0
-    });
-    //Set the carousel options
-    $('#quote-carousel').carousel({
-        pause: true,
-        interval: 4000,
-    });
+
     // fancybox
     $(".fancybox").fancybox();
     //isotope

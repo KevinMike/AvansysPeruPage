@@ -1,98 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Cecap Avansys Perú">
-	<meta name="author" content="Kevin Mike Herera Vega">
-	<title>Cecap Avansys Perú</title>
-	<link rel="favicon" href="{{asset('images/favicon.png')}}assets/">
-	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-	<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CETAP Avansys-Perú</title>
+	<link rel="stylesheet" href="{{asset('css/normalize.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('plugins/PgwSlider/pgwslider.min.css')}}">
+	<link rel="stylesheet" href="{{asset('css/isotope.css')}}">
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-	<!-- Custom styles for our template -->
-	<link rel="stylesheet" href="{{asset('css/bootstrap-theme.css')}}" media="screen">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/isotope.css')}}" media="screen" />
-	<link rel="stylesheet" href="{{asset('js/fancybox/jquery.fancybox.css')}}" type="text/css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="{{asset('css/da-slider.css')}}" />
-	<link rel="stylesheet" href="{{asset('css/style.css')}}">
+	<link rel="stylesheet" href="{{asset('js/fancybox/jquery.fancybox.css')}}">
+	<link rel="stylesheet" href="{{asset('css/index.css') }}">
+	<link rel="stylesheet" href="{{asset('css/publicacion.css')}}">
+	<link rel="stylesheet" href="{{asset('css/estilo_opcional.css')}}">
 </head>
 <body>
-<!-- Fixed navbar -->
-<div class="navbar navbar-inverse">
-	<div class="container">
-		<div class="navbar-header">
-			<!-- Button for smallest screens -->
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-			<a class="navbar-brand" href="#">
-				<img src="{{asset('images/logo.png')}}" width="167px" alt="Logo"><br><br></a>
-		</div>
-		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav pull-right mainNav">
-				@yield('menu')
-			</ul>
-		</div>
-		<!--/.nav-collapse -->
-	</div>
-</div>
-<!-- /.navbar -->
-
-<!-- Header -->
-@yield('cabecera')
-<!-- /Header -->
-
-@yield('contenido')
-
-<footer id="footer">
-	<div class="container">
-		<div class="social text-center">
-			<a href="#"><i class="fa fa-twitter"></i></a>
-			<a href="#"><i class="fa fa-facebook"></i></a>
-			<a href="#"><i class="fa fa-google-plus-square"></i></a>
-		</div>
-
-		<div class="clear"></div>
-		<!--CLEAR FLOATS-->
-	</div>
-	<div class="footer2">
+	<header>
 		<div class="container">
 			<div class="row">
-
-				<!--<div class="col-md-6 panel">
-					<div class="panel-body">
-						<p class="simplenav">
-							<a href="index.html">Home</a> |
-							<a href="about.html">About</a> |
-							<a href="courses.html">Courses</a> |
-							<a href="fees.html">Fees</a> |
-							<a href="portfolio.html">Portfolio</a> |
-							<a href="contact.html">Contact</a>
-						</p>
-					</div>
-				</div>-->
-
-				<div class="col-md-12 panel">
-					<div class="panel-body">
-						<p class="text-right">
-							Copyright &copy; 2016. Desarrollado por <a href="#" rel="develop">Kevin Herrera Vega</a>
-						</p>
-					</div>
-				</div>
-
+				<img id="img2" src="{{asset('images/logo.png')}}" alt="" class="text-center" height="150px">
 			</div>
-			<!-- /row of panels -->
 		</div>
-	</div>
-</footer>
+	</header>
 
-<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="{{asset('js/jquery.cslider.js')}}"></script>
-<script src="{{asset('js/jquery.isotope.min.js')}}"></script>
-<script src="{{asset('js/fancybox/jquery.fancybox.pack.js')}}" type="text/javascript"></script>
-<script src="{{asset('js/custom.js')}}"></script>
-<script src="{{asset('js/smoothscroll.js')}}"></script>
-@yield('javascript')
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				-<a class="navbar-brand" href="{{ url('/') }}" id="inicio">Avansys - Perú</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="items nav navbar-nav ">
+					@yield('menu')
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<div class="separador"> </div>
+	<section>
+	<!--<div class="container">-->
+		<article id="principal" class="row">
+			@yield('contenido')
+		</article>
+		<aside>
+			<div class="subsection1">
+				<div class="cabecera"><p id="titulo2">Fanpage de AvansysPerú</p></div>
+				<div class="contenedor">
+					<div id="fb-root"></div>
+					<div class="fb-page" data-href="https://www.facebook.com/avansys.peru.tacna/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/avansys.peru.tacna/"><a href="https://www.facebook.com/avansys.peru.tacna/">Centro de Capacitacion en Infomatica Empresarial Avansys - Peru</a></blockquote></div></div>
+				</div>
+			</div>
+			<div class="subsection2">
+				<div class="cabecera">
+					<p>¿Ya usaste nuestra Aula Virtual?</p>
+				</div>
+				<div class="contenedor">
+					Haz de tu experiencia de aprendizaje lo más provechoza posible. Si te matriculas a un curso en Avansys Perú, solicita tu cuenta para ingresar al aula cirtual.
+					<img src="{{asset('/images/aula_virtual.png')}}" alt="">
+				</div>
+			</div>
+
+		</aside>
+	<!--</div>-->
+	</section>
+	<footer>
+		Dirección: Tacna, Distrito Gregorio Albarracín
+		Asoc. Las Viñas Mz “B” Lote 4
+		Referencia: Pasando SENASA a cuadra y media antes de llegar al mercado CENEPA <br>
+		Telefono:  052 – 60 89 27 <br>
+		@Copyright 2016 - Todos los derechos reservados
+	</footer>
 </body>
+<script src="{{asset('js/jquery-2.1.3.min.js')}}"></script>
+<script src="{{asset('plugins/jquery-ui-1.11.3/jquery-ui.js')}}"></script>
+<script type="text/javascript" src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('plugins/PgwSlider/pgwslider.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery.isotope.min.js')}}"></script>
+<script src="{{asset('js/fancybox/jquery.fancybox.pack.js')}}" type="text/javascript"></script>
+<script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
+@yield('javascript')
 </html>
