@@ -63,7 +63,7 @@
 					<p>¿Ya usaste nuestra Aula Virtual?</p>
 				</div>
 				<div class="contenedor">
-					Haz de tu experiencia de aprendizaje lo más provechoza posible. Si te matriculas a un curso en Avansys Perú, solicita tu cuenta para ingresar al aula cirtual.
+					Haz de tu experiencia de aprendizaje lo más provechoza posible. Si te matriculas a un curso en Avansys Perú, solicita tu cuenta para ingresar al aula virtual.
 					<img src="{{asset('/images/aula_virtual.png')}}" alt="">
 				</div>
 			</div>
