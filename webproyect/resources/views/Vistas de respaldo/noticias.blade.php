@@ -6,7 +6,7 @@
     <li><a href="{{ url('/cursos') }}" >Cursos</a></li>
     <li><a href="{{ url('/fotos') }}" >Fotos</a></li>
     <li><a href="{{ url('/contacto')}}" >Contáctanos</a></li>
-    <li><a target="_blank" href="http://home.lan:90/moodle/" >Aula Virtual</a></li>
+    <li><a target="_blank" href="/aula" >Aula Virtual</a></li>
 @endsection
 
 @section('cabecera')
