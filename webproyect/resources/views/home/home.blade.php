@@ -79,7 +79,7 @@
 							<div class="form-group">
 								{!! Form::label('imagen', 'Imagen',array('class'=>"col-md-4 control-label")) !!}
 								<div class="col-md-6">
-									{!! Form::file('imagen',array('maxlenght'=>100)) !!}
+									{!! Form::file('imagen',array('maxlenght'=>100,'accept'=>"image/*")) !!}
 								</div>
 							</div>
 							<div class="form-group">
@@ -161,13 +161,13 @@
 							<div class="form-group">
 								{!! Form::label('imagen_curso', 'Imagen del Curso',array('class'=>"col-md-4 control-label")) !!}
 								<div class="col-md-6">
-									{!! Form::file('imagen_curso',array('maxlenght'=>100)) !!}
+									{!! Form::file('imagen_curso',array('maxlenght'=>100,'accept'=>"image/*")) !!}
 								</div>
 							</div>
 							<div class="form-group">
 								{!! Form::label('logo_curso', 'Logo del Curso',array('class'=>"col-md-4 control-label")) !!}
 								<div class="col-md-6">
-									{!! Form::file('logo_curso',array('maxlenght'=>100,'required'=>true)) !!}
+									{!! Form::file('logo_curso',array('maxlenght'=>100,'required'=>true,'accept'=>"image/*")) !!}
 								</div>
 							</div>
 							<div class="form-group">
@@ -224,7 +224,7 @@
 			                <div class="form-group">
 				                {!! Form::label('foto', 'Foto',array('class'=>"col-md-4 control-label")) !!}
 					            <div class="col-md-6">
-					            	{!! Form::file('foto',array('required'=>true,'maxlenght'=>100)) !!}
+					            	{!! Form::file('foto',array('required'=>true,'maxlenght'=>100,'accept'=>"image/*")) !!}
 					            </div>
 				        	</div>
 				        	<div class="form-group">

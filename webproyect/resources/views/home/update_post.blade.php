@@ -61,7 +61,7 @@
 			<div class="form-group">
 				{!! Form::label('imagen', 'Imagen',array('class'=>"col-md-4 control-label")) !!}
 				<div class="col-md-6">
-					{!! Form::file('imagen',array('maxlenght'=>100)) !!}
+					{!! Form::file('imagen',array('maxlenght'=>100,'accept'=>"image/*")) !!}
 				</div>
 			</div>
 			<div class="form-group">

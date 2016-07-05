@@ -7,7 +7,6 @@ use App\Preinscripcion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Hash;
 use App\Categoria;
 use Illuminate\Validation;
 
