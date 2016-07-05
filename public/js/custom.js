@@ -5,9 +5,9 @@ $(document).on('ready',function () {
             options: {
                 ease: "easeInOutCirc",
                 style: 'light',
-                delayBefore: 500,
+                delayBefore: 0,
                 delayAfter: 0,
-                exitTime: 300,
+                exitTime: 0,
                 loaderText: 'Cecap Avansys Perú',
                 lettersDelayTime: 0
             }

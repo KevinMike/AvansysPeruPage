@@ -18,7 +18,7 @@
 |
 */
 
-require __DIR__.'/../webproyect/bootstrap/autoload.php';
+require __DIR__.'/../portalweb/bootstrap/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ require __DIR__.'/../webproyect/bootstrap/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../webproyect/bootstrap/app.php';
+$app = require_once __DIR__.'/../portalweb/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
