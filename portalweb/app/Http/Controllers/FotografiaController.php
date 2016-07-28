@@ -4,12 +4,13 @@
 use Illuminate\Http\Request;
 use App\Foto;
 use Illuminate\Support\Facades\Redirect;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation;
 
 class FotografiaController extends Controller
 {
+
+    var $backImagesDirectory = "/../../../..";
 
     function generateRandomString($length = 10)
     {
@@ -22,20 +23,17 @@ class FotografiaController extends Controller
         return $randomString;
     }
 
-    public function store(Request $request)
+    public function storePhoto(Request $request)
     {
         $file = Input::file("foto");
         $dataUpload = array(
             "descripcion" => Input::get("descripcion"),
-            "foto" => $file//campo foto para validar
+            "foto" => $file
         );
-
         $rules = array(
             'descripcion' => 'required|min:2|max:100',
-            //'foto'     => 'required|image|mimes:jpeg,jpg,png,bmp,gif,svg'
-            'foto' => 'required|mimes:jpeg,jpg,png,bmp,gif,svg'
+            'foto'     => 'required|image|mimes:jpeg,jpg,png,bmp,gif,svg'
         );
-
         $messages = array(
             'required' => 'El campo :attribute es obligatorio.',
             'min' => 'El campo :attribute no puede tener menos de :min carácteres.',
@@ -45,10 +43,7 @@ class FotografiaController extends Controller
             'confirmed' => 'Los passwords no coinciden',
             'mimes' => 'Solo de admiten formatos de imagen jpeg,jpg,png,bmp,gif,svg'
         );
-
         $validation = \Validator::make(Input::all(), $rules, $messages);
-        //si la validación falla redirigimos al formulario de registro con los errores
-        //y con los campos que nos habia llenado el usuario    
         if ($validation->fails()) {
             return Redirect::to('home')->withErrors($validation)->withInput();
         } else {
@@ -58,19 +53,17 @@ class FotografiaController extends Controller
             $user->foto = $nombre;
             $user->categoria = Input::get('categoria');
             if ($user->save()) {
-                //guardamos la imagen en public/imgs con el nombre original
                 $file->move("media/galeria", $nombre);
-                //redirigimos con un mensaje flash
                 return Redirect::to('home')->with(array('confirm' => 'Se Registró la Fotografía ' . $user->descripcion . ' con éxito.'));
             }
         }
     }
 
-    public function destroy(Request $request)
+    public function destroyPhoto(Request $request)
     {
         $id = $request->input('descripcion');
         $foto = Foto::find($id);
-        if (unlink(__DIR__ . "/../../../../public/media/galeria/" . $foto->foto)) {
+        if (unlink(__DIR__ .$this->backImagesDirectory."/public/media/galeria/" . $foto->foto)) {
             $nombre = $foto->descripcion;
             $foto->delete();
             return Redirect::to('home')->with(array('confirm' => 'Se Eliminó la Fotografía ' . $nombre . ' con éxito.'));

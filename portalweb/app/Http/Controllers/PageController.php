@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App\Categoria;
-use Facebook\FacebookSession;
 use Illuminate\Http\Request;
 use App\Curso;
 use App\Preinscripcion;
@@ -48,7 +47,7 @@ class PageController extends Controller
         }
     }
 
-    public function curso_info($id)
+    public function courseDescription($id)
     {
         $curso = Curso::find($id);
         if (!$curso) {
@@ -58,17 +57,12 @@ class PageController extends Controller
         return view('curso_info', array('curso' => $curso, 'interes' => $interes));
     }
 
-    public function contacto()
-    {
-        return view('contacto');
-    }
-
-    public function mapa()
+    public function mapView()
     {
         return view('mapa');
     }
 
-    public function cursos()
+    public function coursesView()
     {
         $curso = Curso::orderBy('fecha_inicio', 'ASC')->get();
         $interes = ['Bajo', 'Medio', 'Alto'];
@@ -76,26 +70,26 @@ class PageController extends Controller
         return view('cursos', array('curso' => $curso, 'interes' => $interes, 'cursos' => $cursos));
     }
 
-    public function fotos()
+    public function photosView()
     {
         $fotos = Foto::all();
         $categorias = Categoria::all();
         return view('fotos', array("fotos" => $fotos, "categorias" => $categorias));
     }
 
-    public function info()
+    public function informationView()
     {
         return view('info');
     }
 
-    public function preinscripcion()
+    public function preinscripcionView()
     {
         $interes = ['Bajo', 'Medio', 'Alto'];
         $cursos = Curso::all();
         return view('preinscripcion', array("curso" => $cursos, "interes" => $interes));
     }
 
-    public function guardar_preinscripcion(Request $request)
+    public function savePreinscription(Request $request)
     {
         $preinscripcion = new Preinscripcion;
         $preinscripcion->dni = $request->input('dni');
@@ -109,12 +103,12 @@ class PageController extends Controller
         return Redirect::to('/');
     }
 
-    public function practicas()
+    public function practicesServicesView()
     {
         return view('practicas');
     }
 
-    public function noticias()
+    public function newsView()
     {
         $noticias = Post::orderBy('updated_at', 'DESC')->paginate(8);
         $noticias->setPath('/pagina/public/post');

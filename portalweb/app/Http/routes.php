@@ -14,42 +14,48 @@
 
 //Route::get('/', 'WelcomeController@index');
 
-//Rutas del controlador de correo electronico
+//Routes for email
 Route::post('send', ['as' => 'send', 'uses' => 'MailController@send'] );
 Route::get('contacto', ['as' => 'contact', 'uses' => 'MailController@index'] );
 
 
-//Rutas del Controlador de control
+//Routes for Dashboard
 Route::get('home', 'HomeController@index');
-Route::post('home/add_curso','HomeController@add_curso');
-Route::post('home/update_curso','HomeController@update_curso');
-Route::post('home/update','HomeController@r_update_curso');
-Route::post('home/delete_curso','HomeController@delete_curso');
-Route::post('home/add_post','HomeController@add_post');
-Route::post('home/delete_post','HomeController@delete_post');
-Route::post('home/update2','HomeController@r_update_post');
-Route::post('home/update_post','HomeController@update_post');
 
-//Rutas del Controlador de autentificacion
+Route::post('home/add_curso','HomeController@addCourse');
+Route::post('home/update_curso','HomeController@updateCourse');
+Route::post('home/update','HomeController@updateCourseView');
+Route::post('home/delete_curso','HomeController@deleteCourse');
+
+Route::post('home/add_post','HomeController@addPost');
+Route::post('home/delete_post','HomeController@deletePost');
+Route::post('home/update2','HomeController@updatePostView');
+Route::post('home/update_post','HomeController@updatePost');
+Route::get('ajax/delete','HomeController@deletePreinscription');
+
+//Routes for Authentication Controller
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
 
-//Rutas de la pagina web
+//Routes for web site
 Route::get('/','PageController@index');
 Route::get('posts/{id}','PageController@posts');
-Route::get('post','PageController@noticias');
-Route::get('mapa','PageController@mapa');
-Route::get('cursos','PageController@cursos');
-Route::get('cursos/{id}','PageController@curso_info');
-Route::get('fotos','PageController@fotos');
-Route::get('informacion','PageController@info');
-Route::get('preinscripcion','PageController@preinscripcion');
-Route::get('practicas','PageController@practicas');
-Route::post('guardar_preinscripcion','PageController@guardar_preinscripcion');
-Route::post('foto/guardar','FotografiaController@store');
-Route::post('foto/eliminar','FotografiaController@destroy');
-Route::get('ajax/delete','HomeController@delete_preinscripcion');
+Route::get('post','PageController@newsView');
+Route::get('mapa','PageController@mapView');
+Route::get('cursos','PageController@coursesView');
+Route::get('cursos/{id}','PageController@courseDescription');
+Route::get('fotos','PageController@photosView');
+Route::get('informacion','PageController@informationView');
+Route::get('preinscripcion','PageController@preinscripcionView');
+Route::get('practicas','PageController@practicesServicesView');
+
+Route::post('guardar_preinscripcion','PageController@savePreinscription');
+
+Route::post('foto/guardar','FotografiaController@storePhoto');
+Route::post('foto/eliminar','FotografiaController@destroyPhoto');
+
+
 
 ?>
